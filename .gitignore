@@ -6,7 +6,6 @@ Thumbs.db
 /.vagrant
 
 ### Composer
-/vendor/
 
 ### IDE
 /.idea
@@ -19,7 +18,6 @@ cs_fixer*
 node_modules/
 
 ### WordPress
-/htdocs/cms/
 /htdocs/content/uploads/
 /htdocs/content/upgrade/
 
