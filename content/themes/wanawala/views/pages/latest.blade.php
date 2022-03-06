@@ -9,7 +9,11 @@
                     {{ $new->post_title ?? '' }}
                 </a>
 
-                <h5><a href="{{ url($new->post_name) }}">{{ the_excerpt() }}</a></h5>
+                <h5>
+                    <a href="{{ url($new->post_name) }}">
+                        {{ !empty(get_field('headline', $new->ID)) ? substr(get_field('headline', $new->ID),0,120).'[...]' : the_excerpt() }}
+                    </a>
+                </h5>
             </div>
 
             <div class="featured-image margin-top-15">

@@ -7,7 +7,11 @@
         <div class="top">
             <div class="top-inner">
                 <a href="{{ url($most->post_name) }}" class="title">{{ $most->post_title ?? '' }}</a>
-                <h5><a href="{{ url($most->post_name) }}">{{ the_excerpt() }}</a></h5>
+                <h5>
+                    <a href="{{ url($most->post_name) }}">
+                        {{ !empty(get_field('headline', $most->ID)) ? substr(get_field('headline', $most->ID),0,120).'[...]' : the_excerpt() }}
+                    </a>
+                </h5>
             </div>
 
             <div class="featured-image margin-top-15">

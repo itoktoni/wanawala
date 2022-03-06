@@ -31,7 +31,7 @@
         <div class="split-two flex-2">
             @if(!empty($latest))
             @foreach($latest as $split)
-            <div class="featured-image">
+            <div class="featured-image feature-right">
                 <a href="{{ url('/'.$split->post_name) ?? '' }}">
                     <img src="{{ getThumnail($split->ID, 'large') }}" class="attachment-large size-large wp-post-image" alt="nisan kuno">
                 </a>
