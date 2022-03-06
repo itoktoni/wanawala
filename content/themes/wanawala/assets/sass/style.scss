@@ -5602,6 +5602,11 @@ a {
         }
 
         .post-content {
+
+            a{
+                color:#000;
+            }
+
             ul {
                 margin-left: 20px;
                 li {
@@ -5626,6 +5631,11 @@ a {
 
             .more-link-wrapper {
                 margin-top: 20px;
+                color:#176db3;
+
+                .more-link{
+                    color:inherit;
+                }
             }
         }
 
@@ -5675,7 +5685,7 @@ a {
             margin: 0px auto !important;
 
             @media (max-width: 600px) {
-                width: 90% !important;
+                width: 100% !important;
             }
 
             .hero-image {
@@ -5706,10 +5716,10 @@ a {
 
             .post-title {
                 font-weight: bold;
-                font-size: 30px !important;
+                font-size: 25px !important;
 
                 @media (max-width: 600px) {
-                    font-size: 25px !important;
+                    font-size: 20px !important;
                     margin-bottom: 10px;
                 }
             }
@@ -6149,12 +6159,15 @@ a {
 
 .slider-single{
 
-    span{
-        padding:10px;
-    }
+    .container-images{
+    
+        .slider-images {
+            line-height: 10rem;
+        }
 
-    .slider-images {
-        line-height: 10rem;
+        p{
+            font-size:18px !important;
+        }
     }
 
     .slick-next{
@@ -6185,9 +6198,12 @@ a {
 
 .slider-images {
     font-size: 2.25rem;
-    margin: .5rem;
     position: relative;
     text-align: center;
+
+    &.slider-item{
+        margin:0px 5px;
+    }
 }
 
 .slider-nav{

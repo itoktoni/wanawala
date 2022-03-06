@@ -3,7 +3,7 @@
 @section('content')
 
 <section id="main" class="main" role="main">
-    
+
     <div id="loop-container" class="loop-container">
         <div class="post type-post status-publish format-standard has-post-thumbnail entry">
             <article>
@@ -22,24 +22,28 @@
                     </div>
                 </div>
                 <div class="featured-image">
-                    <img src="{{ getThumnail($post->ID, 'large') }}" class="attachment-large size-large wp-post-image" alt="nisan kuno">
+                    <a href="{{ url($post->post_name) ?? '' }}">
+                        <img src="{{ getThumnail($post->ID, 'large') }}" class="attachment-large size-large wp-post-image" alt="nisan kuno">
+                    </a>
                 </div>
                 <div class="post-content">
-                    <ul>
-                        @if(!empty(get_field('list_headline', $post->ID)))
-                        @foreach(get_field('list_headline', $post->ID) as $hero_sub)
-                        <li>
-                            <h2>{{ $hero_sub['description'] ?? '' }}</h2>
-                        </li>
-                        @endforeach
-                        @endif
-                    </ul>
+                    <a href="{{ url($post->post_name) ?? '' }}">
+                        <ul>
+                            @if(!empty(get_field('list_headline', $post->ID)))
+                            @foreach(get_field('list_headline', $post->ID) as $hero_sub)
+                            <li>
+                                <h2>{{ $hero_sub['description'] ?? '' }}</h2>
+                            </li>
+                            @endforeach
+                            @endif
+                        </ul>
 
-                    <div class="more-link-wrapper">
-                        <a class="more-link" href="{{ url('/'.$post->post_name) ?? '' }}">
-                            Read more...
-                        </a>
-                    </div>
+                        <div class="more-link-wrapper">
+                            <a class="more-link" href="{{ url('/'.$post->post_name) ?? '' }}">
+                                Read more...
+                            </a>
+                        </div>
+                    </a>
                 </div>
             </article>
         </div>
@@ -50,21 +54,23 @@
 
                     <div class="post-header">
                         <h3 class="post-title post-category">
-                            <a href="">Citraleka</a>
+                            <a href="{{ url('/category/citraleka') }}">Citraleka</a>
                         </h3>
-                        <a class="post-description" href="">See more gallery</a>
+                        <a class="post-description" href="{{ url('/category/citraleka') }}">See more gallery</a>
                     </div>
 
                     <div class="layout-flex citraleka carousel">
                         @if(!empty($citraleka))
                         @foreach($citraleka as $citra)
                         <div class="content margin-10">
-                            <img src="{{ getThumnail($citra->ID, 'medium') }}" alt="{{ $citra->post_title }}">
-                            <h4 class="title-description">
-                                <a href="{{ url('/'.$citra->post_name) ?? '' }}">
-                                    {{ $citra->post_title ?? '' }}
-                                </a>
-                            </h4>
+                            <a href="{{ url('/'.$citra->post_name) ?? '' }}">
+                                <img src="{{ getThumnail($citra->ID, 'medium') }}" alt="{{ $citra->post_title }}">
+                                <h4 class="title-description">
+                                    <a href="{{ url('/'.$citra->post_name) ?? '' }}">
+                                        {{ $citra->post_title ?? '' }}
+                                    </a>
+                                </h4>
+                            </a>
                         </div>
                         @endforeach
                         @endif
@@ -98,26 +104,30 @@
                             </h2>
 
                             <div class="title-secondary">
-                                <ul>
-                                    @if(!empty(get_field('list_headline', $actual[0]->ID)))
-                                    @foreach(get_field('list_headline', $actual[0]->ID) as $actual_sub)
-                                    <li>
-                                        <h2>{{ $actual_sub['description'] ?? '' }}</h2>
-                                    </li>
-                                    @endforeach
-                                    @endif
-                                </ul>
+                                <a href="{{ url('/'.$actual[0]->post_name) ?? '' }}">
+                                    <ul>
+                                        @if(!empty(get_field('list_headline', $actual[0]->ID)))
+                                        @foreach(get_field('list_headline', $actual[0]->ID) as $actual_sub)
+                                        <li>
+                                            <h2>{{ $actual_sub['description'] ?? '' }}</h2>
+                                        </li>
+                                        @endforeach
+                                        @endif
+                                    </ul>
 
-                                <div class="more-link-wrapper">
-                                    <a class="more-link" href="{{ url('/'.$actual[0]->post_name) ?? '' }}">
-                                        Read more...
-                                    </a>
-                                </div>
+                                    <div class="more-link-wrapper">
+                                        <a class="more-link" href="{{ url('/'.$actual[0]->post_name) ?? '' }}">
+                                            Read more...
+                                        </a>
+                                    </div>
+                                </a>
                             </div>
                         </div>
                         <div class="post-image flex-1">
                             <div class="featured-image feature-list-image">
-                                <img src="{{ getThumnail($actual[0]->ID, 'medium_large') }}" class="attachment-large size-large wp-post-image" alt="{{ $actual[0]->post_title ?? '' }}">
+                                <a href="{{ url('/'.$actual[0]->post_name) ?? '' }}">
+                                    <img src="{{ getThumnail($actual[0]->ID, 'medium_large') }}" class="attachment-large size-large wp-post-image" alt="{{ $actual[0]->post_title ?? '' }}">
+                                </a>
                             </div>
                         </div>
 
@@ -141,7 +151,9 @@
                             </h2>
 
                             <h3 class="title-description margin-top-15">
-                                {{ the_excerpt() }}
+                                <a href="{{ url('/'.$actual_sub->post_name) ?? '' }}">
+                                    {{ the_excerpt() }}
+                                </a>
                             </h3>
 
                         </div>
@@ -178,26 +190,32 @@
                             </h2>
 
                             <div class="title-secondary">
-                                <ul>
-                                    @if(!empty(get_field('list_headline', $sigi[0]->ID)))
-                                    @foreach(get_field('list_headline', $sigi[0]->ID) as $sigi_sub)
-                                    <li>
-                                        <h2>{{ $sigi_sub['description'] ?? '' }}</h2>
-                                    </li>
-                                    @endforeach
-                                    @endif
-                                </ul>
+                                <a href="{{ url('/'.$sigi[0]->post_name) ?? '' }}">
 
-                                <div class="more-link-wrapper">
-                                    <a class="more-link" href="{{ url('/'.$sigi[0]->post_name) ?? '' }}">
-                                        Read more...
-                                    </a>
-                                </div>
+                                    <ul>
+                                        @if(!empty(get_field('list_headline', $sigi[0]->ID)))
+                                        @foreach(get_field('list_headline', $sigi[0]->ID) as $sigi_sub)
+                                        <li>
+                                            <h2>{{ $sigi_sub['description'] ?? '' }}</h2>
+                                        </li>
+                                        @endforeach
+                                        @endif
+                                    </ul>
+
+                                    <div class="more-link-wrapper">
+                                        <a class="more-link" href="{{ url('/'.$sigi[0]->post_name) ?? '' }}">
+                                            Read more...
+                                        </a>
+                                    </div>
+                                </a>
+
                             </div>
                         </div>
                         <div class="post-image flex-1">
                             <div class="featured-image feature-list-image">
-                                <img src="{{ getThumnail($sigi[0]->ID, 'medium_large') }}" class="attachment-large size-large wp-post-image" alt="{{ $sigi[0]->post_title ?? '' }}">
+                                <a href="{{ url('/'.$sigi[0]->post_name) ?? '' }}">
+                                    <img src="{{ getThumnail($sigi[0]->ID, 'medium_large') }}" class="attachment-large size-large wp-post-image" alt="{{ $sigi[0]->post_title ?? '' }}">
+                                </a>
                             </div>
                         </div>
 
@@ -221,7 +239,9 @@
                             </h2>
 
                             <h3 class="title-description margin-top-15">
-                                {{ the_excerpt() }}
+                                <a href="{{ url('/'.$sigi_sub->post_name) ?? '' }}">
+                                    {{ the_excerpt() }}
+                                </a>
                             </h3>
 
                         </div>
@@ -258,26 +278,32 @@
                             </h2>
 
                             <div class="title-secondary">
-                                <ul>
-                                    @if(!empty(get_field('list_headline', $fakta[0]->ID)))
-                                    @foreach(get_field('list_headline', $fakta[0]->ID) as $fakta_sub)
-                                    <li>
-                                        <h2>{{ $fakta_sub['description'] ?? '' }}</h2>
-                                    </li>
-                                    @endforeach
-                                    @endif
-                                </ul>
+                                <a href="{{ url('/'.$fakta[0]->post_name) ?? '' }}">
 
-                                <div class="more-link-wrapper">
-                                    <a class="more-link" href="{{ url('/'.$fakta[0]->post_name) ?? '' }}">
-                                        Read more...
-                                    </a>
-                                </div>
+                                    <ul>
+                                        @if(!empty(get_field('list_headline', $fakta[0]->ID)))
+                                        @foreach(get_field('list_headline', $fakta[0]->ID) as $fakta_sub)
+                                        <li>
+                                            <h2>{{ $fakta_sub['description'] ?? '' }}</h2>
+                                        </li>
+                                        @endforeach
+                                        @endif
+                                    </ul>
+
+                                    <div class="more-link-wrapper">
+                                        <a class="more-link" href="{{ url('/'.$fakta[0]->post_name) ?? '' }}">
+                                            Read more...
+                                        </a>
+                                    </div>
+                                </a>
+
                             </div>
                         </div>
                         <div class="post-image flex-1">
                             <div class="featured-image feature-list-image">
-                                <img src="{{ getThumnail($fakta[0]->ID, 'medium_large') }}" class="attachment-large size-large wp-post-image" alt="{{ $fakta[0]->post_title ?? '' }}">
+                                <a href="{{ url('/'.$fakta[0]->post_name) ?? '' }}">
+                                    <img src="{{ getThumnail($fakta[0]->ID, 'medium_large') }}" class="attachment-large size-large wp-post-image" alt="{{ $fakta[0]->post_title ?? '' }}">
+                                </a>
                             </div>
                         </div>
 
@@ -301,7 +327,9 @@
                             </h2>
 
                             <h3 class="title-description margin-top-15">
-                                {{ the_excerpt() }}
+                                <a href="{{ url('/'.$fakta_sub->post_name) ?? '' }}">
+                                    {{ the_excerpt() }}
+                                </a>
                             </h3>
 
                         </div>

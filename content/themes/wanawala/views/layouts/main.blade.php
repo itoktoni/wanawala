@@ -6,6 +6,8 @@
     @include('layouts.meta')
     @include('layouts.css')
 
+
+
 </head>
 
 <body id="mission-news" class="{{ is_home() || (is_category() && getMetaCategory($post->ID) != 'citraleka') ? 'blog wp-custom-logo layout-double layout-right-sidebar-wide' : 'post-template-default single single-post single-format-standard wp-custom-logo layout-double layout-no-sidebar-wide' }}">

@@ -24,11 +24,16 @@
 
                     @if(!empty($gallery))
                     <div class="gallery">
+                        <hr>
                         <div class="slider slider-single">
+
                             @foreach($gallery as $citra)
-                            <div>
-                                <div class="slider-images"><img src="{{ $citra->photo_image->url ?? '' }}" alt=""></div>
-                                <span>{{ $citra->photo_caption ?? '' }}</span>
+                            <div class="container-images">
+                                <div class="slider-images">
+                                    <img src="{{ $citra->photo_image->url ?? '' }}" alt="">
+                                </div>
+                                <p>{{ $citra->photo_caption ?? '' }}</p>
+                                <hr>
                             </div>
                             @endforeach
                         </div>
@@ -36,7 +41,7 @@
                         <div class="slider slider-nav">
                             @foreach($gallery as $citra)
                             <div>
-                                <div class="slider-images">
+                                <div class="slider-images slider-item">
                                     <span>
                                         <img src="{{ $citra->photo_image->sizes->medium ?? '' }}" alt="">
                                     </span>
@@ -72,6 +77,29 @@
 
                     <div class="content">
                         {!! Loop::content() !!}
+                    </div>
+
+                    <div class="post-content">
+                        <div class="post-meta">
+                            @if(!empty(get_field('editorial', $post->ID)))
+                            <h5 class="team">Editorial Team</h5>
+                            @foreach(get_field('editorial', $post->ID) as $editor)
+                            <div class="post-author">
+                                <div class="avatar-container">
+                                    <img class="avatar-image" src="{{ get_avatar_url($editor['author_user']->ID) }}" alt="{{ get_the_author_meta('first_name', $editor['author_user']->ID) }}">
+                                </div>
+                                <div>
+                                    <span class="author">
+                                        <a href="{{ url('author/'.get_the_author_meta('nickname', $editor['author_user']->ID)) ?? '' }}">
+                                            {{ get_the_author_meta('first_name', $editor['author_user']->ID) }}
+                                        </a>
+                                    </span>
+                                    <p>{{ $editor['author_job'] ?? '' }}</p>
+                                </div>
+                            </div>
+                            @endforeach
+                            @endif
+                        </div>
                     </div>
 
                     @if(comments_open() || get_comments_number())
@@ -128,24 +156,7 @@
                             </ul>
                         </div>
 
-                        @if(!empty(get_field('editorial', $post->ID)))
-                        <h5 class="team">Editorial Team</h5>
-                        @foreach(get_field('editorial', $post->ID) as $editor)
-                        <div class="post-author">
-                            <div class="avatar-container">
-                                <img class="avatar-image" src="{{ get_avatar_url($editor['author_user']->ID) }}" alt="{{ get_the_author_meta('first_name', $editor['author_user']->ID) }}">
-                            </div>
-                            <div>
-                                <span class="author">
-                                    <a href="{{ url('author/'.get_the_author_meta('nickname', $editor['author_user']->ID)) ?? '' }}">
-                                        {{ get_the_author_meta('first_name', $editor['author_user']->ID) }}
-                                    </a>
-                                </span>
-                                <p>{{ $editor['author_job'] ?? '' }}</p>
-                            </div>
-                        </div>
-                        @endforeach
-                        @endif
+
                     </div>
 
             </article>
@@ -157,16 +168,21 @@
 <script>
     $(document).ready(function() {
 
-        $('.slider-single').slick({
-            slidesToShow: 1,
-            slidesToScroll: 1,
-            arrows: true,
-            fade: false,
-            adaptiveHeight: true,
-            infinite: false,
-            useTransform: true,
-            speed: 400,
-            cssEase: 'cubic-bezier(0.77, 0, 0.18, 1)',
+        $('.slider-single').each(function() {
+            var slider = $(this);
+            slider.slick({
+                slidesToShow: 1,
+                slidesToScroll: 1,
+                dots: false,
+                arrows: false,
+                infinite: true
+            });
+
+            var sLightbox = $(this);
+            sLightbox.slickLightbox({
+                src: 'src',
+                itemSelector: '.slider-images img'
+            });
         });
 
         $('.slider-nav')
