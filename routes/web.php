@@ -65,6 +65,7 @@ Route::any('category', ['citraleka', function ($post, $query) {
 
     return view('pages.citraleka', [
         'post' => $post, 
+        'citraleka' => true, 
         'latest' => $latest,
         'data' => $data,
     ]);
