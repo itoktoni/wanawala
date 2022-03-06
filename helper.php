@@ -12,7 +12,7 @@ function getThemeName()
 
 function getLogo()
 {
-    return wp_get_attachment_image_src(get_theme_mod('custom_logo') , true)[0];
+    return wp_get_attachment_image_src(get_theme_mod('custom_logo'), true)[0];
 }
 
 function getThemeAsset($name = null)
@@ -130,6 +130,12 @@ function getPopular($number = 3)
     }
 
     return $data;
+}
+
+function getParagraph($id)
+{
+    $paragraf = get_field('headline', $id);
+    return !empty($paragraf) ? substr($paragraf, 0, 120) . '[...]' : get_the_excerpt($id).'[...]';
 }
 
 function formatDate($date)

@@ -11,7 +11,7 @@
 
                 <h5>
                     <a href="{{ url($new->post_name) }}">
-                        {{ !empty(get_field('headline', $new->ID)) ? substr(get_field('headline', $new->ID),0,120).'[...]' : the_excerpt() }}
+                        {{ getParagraph($new->ID) }}
                     </a>
                 </h5>
             </div>

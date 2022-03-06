@@ -34,7 +34,9 @@
 
                                 <h3 class="title-description">
                                     <a href="{{ url('/'.$flex->post_name) ?? '' }}">
-                                        {{ the_excerpt() }}
+                                        <p>
+                                            {{ getParagraph($flex->ID) }}
+                                        </p>
                                     </a>
                                 </h3>
 

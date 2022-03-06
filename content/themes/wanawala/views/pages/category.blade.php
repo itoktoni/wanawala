@@ -83,7 +83,7 @@
 
                             <h3 class="title-description margin-top-15">
                                 <a href="{{ url('/'.$flex->post_name) ?? '' }}">
-                                    {{ the_excerpt() }}
+                                    {{ getParagraph($flex->ID) }}
                                 </a>
                             </h3>
 

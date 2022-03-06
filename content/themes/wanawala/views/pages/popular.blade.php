@@ -9,7 +9,7 @@
                 <a href="{{ url($most->post_name) }}" class="title">{{ $most->post_title ?? '' }}</a>
                 <h5>
                     <a href="{{ url($most->post_name) }}">
-                        {{ !empty(get_field('headline', $most->ID)) ? substr(get_field('headline', $most->ID),0,120).'[...]' : the_excerpt() }}
+                        {{ getParagraph($most->ID) }}
                     </a>
                 </h5>
             </div>

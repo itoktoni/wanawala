@@ -152,7 +152,7 @@
 
                             <h3 class="title-description margin-top-15">
                                 <a href="{{ url('/'.$actual_sub->post_name) ?? '' }}">
-                                    {{ the_excerpt() }}
+                                    {{ getParagraph($actual_sub->ID) }}
                                 </a>
                             </h3>
 
@@ -240,7 +240,7 @@
 
                             <h3 class="title-description margin-top-15">
                                 <a href="{{ url('/'.$sigi_sub->post_name) ?? '' }}">
-                                    {{ the_excerpt() }}
+                                    {{ getParagraph($sigi_sub->ID) }}
                                 </a>
                             </h3>
 
@@ -328,7 +328,7 @@
 
                             <h3 class="title-description margin-top-15">
                                 <a href="{{ url('/'.$fakta_sub->post_name) ?? '' }}">
-                                    {{ the_excerpt() }}
+                                    {{ getParagraph($fakta_sub->ID) }}
                                 </a>
                             </h3>
 
