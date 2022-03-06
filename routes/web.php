@@ -62,7 +62,6 @@ Route::any('category', ['citraleka', function ($post, $query) {
     $id = collect($latest)->pluck('ID')->merge([$post->ID])->toArray();
 
     $data = collect($query->posts)->whereNotIn('ID', $id)->chunk(get_option('citraleka_block') ?? 4)->toArray();
-    dd(true);
     return view('pages.citraleka', [
         'post' => $post, 
         'citraleka' => true, 
