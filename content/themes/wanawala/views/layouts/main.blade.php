@@ -7,8 +7,7 @@
     @include('layouts.css')
 
 </head>
-{{ dump($citraleka) }}
-<body id="mission-news" class="{{ is_home() || (is_category() && !isset($citraleka)) ? 'blog wp-custom-logo layout-double layout-right-sidebar-wide' : 'post-template-default single single-post single-format-standard wp-custom-logo layout-double layout-no-sidebar-wide' }}">
+<body id="mission-news" class="{{ is_home() || (is_category() && !$citraleka) ? 'blog wp-custom-logo layout-double layout-right-sidebar-wide' : 'post-template-default single single-post single-format-standard wp-custom-logo layout-double layout-no-sidebar-wide' }}">
     <a class="skip-content" href="https://wanawala.com/#main">Press "Enter" to skip to content</a>
     <div id="overflow-container" class="overflow-container">
         <div id="max-width" class="max-width">
