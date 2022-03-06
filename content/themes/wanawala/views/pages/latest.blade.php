@@ -9,9 +9,7 @@
                     {{ $new->post_title ?? '' }}
                 </a>
 
-                <h5>
-                    {{ the_excerpt() }}
-                </h5>
+                <h5><a href="{{ url($new->post_name) }}">{{ the_excerpt() }}</a></h5>
             </div>
 
             <div class="featured-image margin-top-15">

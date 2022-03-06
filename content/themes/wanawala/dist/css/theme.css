@@ -5732,3 +5732,7 @@ a {
   color: inherit;
 }
 
+.post-item .top .top-inner h5 a {
+  color: #000;
+}
+

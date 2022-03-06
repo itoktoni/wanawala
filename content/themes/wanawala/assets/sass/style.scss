@@ -6256,7 +6256,7 @@ a {
         .title-description{
             font-size:18px;
             color:#000;
-            
+
             a{
                 color:inherit;
             }
@@ -6265,3 +6265,14 @@ a {
 }
 
 
+.post-item{
+    .top{
+        .top-inner{
+            h5{
+                a{
+                    color:#000;
+                }
+            }
+        }
+    }
+}
