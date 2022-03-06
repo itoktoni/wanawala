@@ -33,10 +33,11 @@
                                     <img src="{{ $citra->photo_image->url ?? '' }}" alt="">
                                 </div>
                                 <p>{{ $citra->photo_caption ?? '' }}</p>
-                                <hr>
                             </div>
                             @endforeach
                         </div>
+                        
+                        <hr style="margin-top:-10px">
 
                         <div class="slider slider-nav">
                             @foreach($gallery as $citra)
