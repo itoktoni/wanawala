@@ -11,10 +11,10 @@
                         {{ $ruang->post_title ?? '' }}
                     </a>
                 </h4>
-                <span><a href="{{ url('author/'.get_the_author_meta('nickname', $post->post_author)) ?? '' }}">{{ get_the_author_meta('first_name', $post->post_author) }}</a></span>
+                <span><a href="{{ url('author/'.get_the_author_meta('nickname', $ruang->post_author)) ?? '' }}">{{ getAuthor($ruang->post_author) }}</a></span>
             </div>
             <div class="image-cerpen">
-                <img src="{{ get_avatar_url($ruang->post_author) }}" alt="{{ get_the_author_meta('first_name', $post->post_author) }}">
+                <img src="{{ get_avatar_url($ruang->post_author) }}" alt="{{ get_the_author_meta('first_name', $ruang->post_author) }}">
             </div>
         </div>
     </li>
