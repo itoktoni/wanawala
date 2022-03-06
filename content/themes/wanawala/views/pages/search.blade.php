@@ -19,7 +19,9 @@
 
                             <div class="photo-search flex-2">
                                 <div class="box-image">
-                                    <img src="{{ getThumnail($flex->ID, 'medium_large') }}" class="attachment-large size-large wp-post-image" alt="{{ $flex->post_title ?? '' }}">
+                                    <a href="{{ url('/'.$flex->post_name) ?? '' }}">
+                                        <img src="{{ getThumnail($flex->ID, 'medium_large') }}" class="attachment-large size-large wp-post-image" alt="{{ $flex->post_title ?? '' }}">
+                                    </a>
                                 </div>
                             </div>
 
@@ -31,7 +33,9 @@
                                 </h2>
 
                                 <h3 class="title-description">
-                                    {{ the_excerpt() }}
+                                    <a href="{{ url('/'.$flex->post_name) ?? '' }}">
+                                        {{ the_excerpt() }}
+                                    </a>
                                 </h3>
 
                                 <div class="top-inner">

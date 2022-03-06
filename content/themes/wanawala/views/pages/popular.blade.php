@@ -6,7 +6,7 @@
     <li class="post-item has-image">
         <div class="top">
             <div class="top-inner">
-                <a href="{{ url($most->post_name) }}" class="title">{{ $most->post_name ?? '' }}</a>
+                <a href="{{ url($most->post_name) }}" class="title">{{ $most->post_title ?? '' }}</a>
                 <h5>{{ the_excerpt() }}</h5>
             </div>
 

@@ -6255,6 +6255,11 @@ a {
 
         .title-description{
             font-size:18px;
+            color:#000;
+            
+            a{
+                color:inherit;
+            }
         }
     }
 }

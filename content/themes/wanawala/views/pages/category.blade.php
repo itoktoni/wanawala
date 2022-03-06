@@ -23,24 +23,28 @@
                     </div>
                 </div>
                 <div class="featured-image">
-                    <img src="{{ getThumnail($post->ID, 'large') }}" class="attachment-large size-large wp-post-image" alt="nisan kuno">
+                    <a href="{{ url($post->post_name) ?? '' }}">
+                        <img src="{{ getThumnail($post->ID, 'large') }}" class="attachment-large size-large wp-post-image" alt="nisan kuno">
+                    </a>
                 </div>
                 <div class="post-content">
-                    <ul>
-                        @if(!empty(get_field('list_headline', $post->ID)))
-                        @foreach(get_field('list_headline', $post->ID) as $hero_sub)
-                        <li>
-                            <h2>{{ $hero_sub['description'] ?? '' }}</h2>
-                        </li>
-                        @endforeach
-                        @endif
-                    </ul>
+                    <a href="{{ url($post->post_name) ?? '' }}">
+                        <ul>
+                            @if(!empty(get_field('list_headline', $post->ID)))
+                            @foreach(get_field('list_headline', $post->ID) as $hero_sub)
+                            <li>
+                                <h2>{{ $hero_sub['description'] ?? '' }}</h2>
+                            </li>
+                            @endforeach
+                            @endif
+                        </ul>
 
-                    <div class="more-link-wrapper">
-                        <a class="more-link" href="{{ url('/'.$post->post_name) ?? '' }}">
-                            Read more...
-                        </a>
-                    </div>
+                        <div class="more-link-wrapper">
+                            <a class="more-link" href="{{ url('/'.$post->post_name) ?? '' }}">
+                                Read more...
+                            </a>
+                        </div>
+                    </a>
                 </div>
             </article>
         </div>
@@ -78,7 +82,9 @@
                             </h2>
 
                             <h3 class="title-description margin-top-15">
-                                {{ the_excerpt() }}
+                                <a href="{{ url('/'.$flex->post_name) ?? '' }}">
+                                    {{ the_excerpt() }}
+                                </a>
                             </h3>
 
                         </div>

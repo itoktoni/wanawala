@@ -6,7 +6,7 @@
         <div class="top">
             <div class="top-inner">
                 <a href="{{ url($new->post_name) }}" class="title">
-                    {{ $new->post_name ?? '' }}
+                    {{ $new->post_title ?? '' }}
                 </a>
 
                 <h5>

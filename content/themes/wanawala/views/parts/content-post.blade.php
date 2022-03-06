@@ -36,7 +36,7 @@
                             </div>
                             @endforeach
                         </div>
-                        
+
                         <hr style="margin-top:-10px">
 
                         <div class="slider slider-nav">
@@ -121,7 +121,9 @@
                                 <div class="box">
 
                                     <div class="box-image">
-                                        <img src="{{ getThumnail($recomend->ID, 'medium_large') }}" class="attachment-large size-large wp-post-image" alt="{{ $recomend->post_title ?? '' }}">
+                                        <a href="{{ url('/'.$recomend->post_name) ?? '' }}">
+                                            <img src="{{ getThumnail($recomend->ID, 'medium_large') }}" class="attachment-large size-large wp-post-image" alt="{{ $recomend->post_title ?? '' }}">
+                                        </a>
                                     </div>
                                     <h5 class="slick-title">
                                         <a href="{{ url('/'.$recomend->post_name) ?? '' }}">
@@ -179,11 +181,11 @@
                 infinite: true
             });
 
-            var sLightbox = $(this);
-            sLightbox.slickLightbox({
-                src: 'src',
-                itemSelector: '.slider-images img'
-            });
+            // var sLightbox = $(this);
+            // sLightbox.slickLightbox({
+            //     src: 'src',
+            //     itemSelector: '.slider-images img'
+            // });
         });
 
         $('.slider-nav')

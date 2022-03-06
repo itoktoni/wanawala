@@ -13,7 +13,7 @@ class HomeController extends Controller
      */
     public function index(WP_Post $post)
     {
-        $latest = getLatest();
+        $latest = collect(getLatest(4))->where('ID', '!=', $post->ID);
         $popular = getPopular();
         $tags = getTag();
         $citraleka = getPostByCategory('citraleka');

@@ -23,7 +23,6 @@
                         <a href="{{ url('author/'.getAuthor($post->post_author, 'user_nicename')) }}">
                             {{ getAuthor($post->post_author) }}</a>
                         on {{ formatDate($post->post_date) }}
-
                     </div>
                 </div>
             </div>
