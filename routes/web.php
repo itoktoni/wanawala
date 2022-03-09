@@ -74,13 +74,14 @@ Route::any('category', function ($post, $query) {
 
     $latest = getLatest(2);
     $popular = getPopular(2);
-    $tags = getTag(2);
-    $category = $query->queried_object;
+    $tags = getTag(5);
+    $kata = getPostByKata();
     $data = collect($query->posts)->where('ID', '!=', $post->ID)->chunk(get_option('theme_block') ?? 3)->toArray();
 
     $data = [
         'tags' => $tags,
         'latest' => $latest,
+        'kata' => $kata,
         'popular' => $popular,
         'post' => $post,
         'data' => $data,

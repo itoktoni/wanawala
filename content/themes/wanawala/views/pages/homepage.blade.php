@@ -56,7 +56,7 @@
                         <h3 class="post-title post-category">
                             <a href="{{ url('/category/citraleka') }}">Citraleka</a>
                         </h3>
-                        <a class="post-description" href="{{ url('/category/citraleka') }}">See more gallery</a>
+                        <a class="post-description see-more" href="{{ url('/category/citraleka') }}">See more gallery</a>
                     </div>
 
                     <div class="layout-flex citraleka carousel">
@@ -67,7 +67,7 @@
                                 <img src="{{ getThumnail($citra->ID, 'medium') }}" alt="{{ $citra->post_title }}">
                                 <h4 class="title-description">
                                     <a href="{{ url('/'.$citra->post_name) ?? '' }}">
-                                        {{ $citra->post_title ?? '' }}
+                                        <strong>{{ $citra->post_title ?? '' }}</strong>
                                     </a>
                                 </h4>
                             </a>

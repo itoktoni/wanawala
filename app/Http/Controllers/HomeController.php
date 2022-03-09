@@ -15,12 +15,12 @@ class HomeController extends Controller
     {
         $latest = collect(getLatest(4))->where('ID', '!=', $post->ID);
         $popular = getPopular();
-        $tags = getTag();
+        $tags = getTag(5);
         $citraleka = getPostByCategory('citraleka');
         $actual = getPostByCategory('aktual', 4);
         $sigi = getPostByCategory('sigi', 4);
         $fakta = getPostByCategory('cek-fakta', 4);
-        $kata = getPostByCategory('ruang-kata');
+        $kata = getPostByKata();
 
         $data = [
             'tags' => $tags,

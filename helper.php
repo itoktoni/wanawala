@@ -78,10 +78,54 @@ function getPostByCategory($slug, $number = 3, $except = false)
         while ($wp_query->have_posts()) {
             $wp_query->the_post();
             $data[] = get_post(get_the_ID());
+            if ($slug == 'ruang-kata') {
+                $user = get_field('editorial', get_the_ID());
+            }
         }
     }
 
     return $data;
+}
+
+
+function getPostByKata($number = 3, $except = false)
+{
+    $product = array(
+        'post__not_in' => $except,
+        'category_name' => 'ruang-kata',
+        'post_status' => 'publish',
+        'post_type' => 'post',
+        'posts_per_page' => $number,
+        'order'    => 'DESC',
+    );
+
+    $wp_query = new WP_Query($product);
+    $data = false;
+    if ($wp_query->have_posts()) {
+        while ($wp_query->have_posts()) {
+            $wp_query->the_post();
+            $data[] = [
+                'user' => getUser(get_the_ID()),
+                'data' => get_post(get_the_ID())
+            ];
+        }
+    }
+
+    return $data;
+}
+
+function getUser($id)
+{
+    $check = false;
+    $user = collect(get_field('editorial', $id));
+    if ($user->count() > 0) {
+        
+        $user = $user->first();
+        $check['username'] = get_the_author_meta('nickname', $user['author_user']->ID) ?? '';
+        $check['name'] = get_the_author_meta('first_name', $user['author_user']->ID) ?? '';
+    }
+
+    return $check;
 }
 
 function getLatest($number = 3, $except = false)
@@ -97,7 +141,7 @@ function getLatest($number = 3, $except = false)
     return get_posts($args);
 }
 
-function getTag()
+function getTag($limit = 5)
 {
     $tags = get_tags(array(
         'hide_empty' => false,
@@ -105,6 +149,7 @@ function getTag()
         'largest'                   => 22,
         'orderby'                   => 'count',
         'order'                     => 'DESC',
+        'number'                    => $limit,
         'show_count'                => 1,
     ));
 
@@ -135,7 +180,7 @@ function getPopular($number = 3)
 function getParagraph($id)
 {
     $paragraf = get_field('headline', $id);
-    return !empty($paragraf) ? substr($paragraf, 0, 120) . '[...]' : get_the_excerpt($id).'[...]';
+    return !empty($paragraf) ? substr($paragraf, 0, 120) . '[...]' : get_the_excerpt($id) . '[...]';
 }
 
 function formatDate($date)
