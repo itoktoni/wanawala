@@ -117,10 +117,12 @@ function getPostByKata($number = 3, $except = false)
 function getUser($id)
 {
     $check = false;
-    $user = collect(get_field('editorial', $id));
-    if ($user->count() > 0) {
+    $user = get_field('editorial', $id);
+    if ($user) {
         
-        $user = $user->first();
+        $user = collect($user)->first();
+        $check['id'] = $user['author_user']->ID ?? '';
+        $check['image'] = get_avatar_url($user['author_user']->ID) ?? '';
         $check['username'] = get_the_author_meta('nickname', $user['author_user']->ID) ?? '';
         $check['name'] = get_the_author_meta('first_name', $user['author_user']->ID) ?? '';
     }
