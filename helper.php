@@ -119,7 +119,7 @@ function getUser($id)
     $check = false;
     $user = get_field('editorial', $id);
     if ($user) {
-        
+
         $user = collect($user)->first();
         $check['id'] = $user['author_user']->ID ?? '';
         $check['image'] = get_avatar_url($user['author_user']->ID) ?? '';
@@ -141,6 +141,93 @@ function getLatest($number = 3, $except = false)
     );
 
     return get_posts($args);
+}
+
+$list_post = [];
+
+function getPostRelated($id)
+{
+    $post = getTagSummary($id);
+    if (count($post) > 3) {
+
+        return $post;
+    }
+
+    $category = array_merge($post, getCategoryById($id));
+    return collect($category)->unique('ID')->take(6);
+}
+
+function getCategoryById($id)
+{
+    $list = [];
+    $category = get_the_category($id);
+    if ($category) {
+        foreach ($category as $cat) {
+            $check =  getPostByCategory($cat->slug);
+
+            if ($check) {
+
+                foreach ($check as $post) {
+                    $list[$post->ID] = $post;
+                }
+            }
+        }
+    }
+
+    return $list;
+}
+
+function getTagSummary($id)
+{
+    $data_tag = getTagById($id);
+    $list = [];
+    if ($data_tag) {
+        foreach ($data_tag as $tag) {
+            $check = getPostByTag($tag);
+
+            if ($check) {
+
+                foreach ($check as $post) {
+                    $list[$post->ID] = $post;
+                }
+            }
+        }
+    }
+
+    return $list;
+}
+
+function getTagById($id)
+{
+    $data_tag = get_the_tags($id);
+    $tag = false;
+    if ($data_tag) {
+        foreach ($data_tag as $list) {
+            $tag[] = $list->slug;
+        }
+    }
+
+    return $tag;
+}
+
+function getPostByTag($tag)
+{
+    $product = array(
+        'tag' => $tag,
+        'posts_per_page' => 3,
+        'order'    => 'DESC',
+    );
+
+    $wp_query = new WP_Query($product);
+    $data = false;
+    if ($wp_query->have_posts()) {
+        while ($wp_query->have_posts()) {
+            $wp_query->the_post();
+            $data[get_the_ID()] = get_post(get_the_ID());
+        }
+    }
+
+    return $data;
 }
 
 function getTag($limit = 5)

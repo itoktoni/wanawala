@@ -114,7 +114,7 @@
                         <h3><strong>Related</strong></h3>
                         <div class="layout-flex carousel">
 
-                            @if($latest = getLatest(3))
+                            @if($latest)
                             @foreach($latest as $recomend)
                             <div class="content">
 

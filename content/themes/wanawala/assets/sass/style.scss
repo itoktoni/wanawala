@@ -5432,12 +5432,14 @@ a img {
 
 .layout-flex {
     display: flex;
-    // -webkit-flex-wrap: wrap;
-    // flex-wrap: wrap;
 
     &.carousel{
         .box{
             padding:10px;
+            
+            @media (max-width: 600px) {
+                padding:0px;
+            }
         }
     }
 
@@ -5613,6 +5615,11 @@ a {
 
             ul {
                 margin-left: 20px;
+                
+                @media (max-width: 600px) {
+                    
+                    margin-left: 0px;
+                }
                 li {
                     margin-top: 10px;
                 }
