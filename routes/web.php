@@ -24,9 +24,11 @@ Route::any('singular', function ($post, $query) {
 
     $gallery = get_field('gallery', $post->ID);
     $data = json_decode(json_encode($gallery), FALSE);
+    $latest = getLatest(3);
     
     return view('blog.single', [
         'post' => $post,
+        'latest' => $latest,
         'gallery' => $data,
     ]);
 });
