@@ -33,10 +33,12 @@ Route::any('singular', function ($post, $query) {
     ]);
 });
 
-Route::any('author', function ($post) {
+Route::any('author', function ($post, $query) {
 
+    $data = collect($query->posts)->toArray();
     return view('pages.search', [
-        'post' => $post, // not required
+        'post' => $post, // not required,
+        'data' => $data, // not required
     ]);
 });
 
