@@ -30,8 +30,8 @@
     </div>
     <div class="design-credit">
         <span>
-            <a href="https://www.competethemes.com/mission-news/" rel="nofollow">&copy; {{ date('Y') }} Mission News Theme</a> by
-            <a href="{{ url('/') }}">Wanawala</a>
+            <a href="{{ url('/') }}">&copy; {{ date('Y') }} Wanawala</a><br>
+            <a href="https://www.competethemes.com/mission-news/" rel="nofollow"> by Compete Themes.</a>
         </span>
     </div>
 </footer>
