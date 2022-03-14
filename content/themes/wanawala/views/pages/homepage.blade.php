@@ -166,6 +166,7 @@
         </div>
     </div>
 
+    @if($sigi)
     <div id="loop-container" class="loop-container loop-custom">
 
         <div class="post type-post status-publish format-standard layout-block">
@@ -253,7 +254,9 @@
             </article>
         </div>
     </div>
+    @endif
 
+    @if($fakta)
     <div id="loop-container" class="loop-container loop-custom">
 
         <div class="post type-post status-publish format-standard layout-block">
@@ -341,6 +344,7 @@
             </article>
         </div>
     </div>
+    @endif
 
 </section> <!-- .main -->
 
