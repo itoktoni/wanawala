@@ -29,7 +29,7 @@
                     </a>
                 </h4>
                 <span>
-                    <a href="{{ url('author/'.get_the_author_meta('nickname', $ruang['data']->post_author)) ?? '' }}">
+                    <a href="{{ url('author/'.getUserName($ruang['data']->post_author)) }}">
                         {{ getAuthor($ruang['data']->post_author) }}
                     </a>
                 </span>

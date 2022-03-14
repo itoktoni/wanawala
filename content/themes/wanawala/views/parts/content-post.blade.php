@@ -9,7 +9,7 @@
                             {{ $post->post_title ?? '' }}
                         </a>
                     </h1>
-                    <div class="post-byline">By <a href="{{ url('author/'.getAuthor($post->post_author, 'user_nicename')) }}">{{ getAuthor($post->post_author) }}</a> on {{ formatDate($post->post_date) }} |
+                    <div class="post-byline">By <a href="{{ url('author/'.getUserName($post->post_author)) }}">{{ getAuthor($post->post_author) }}</a> on {{ formatDate($post->post_date) }} |
                         <p class="post-categories">
                             <span class="post-categories">
                                 <a href="{{ url('category/'.getMetaCategory($post->ID, 'slug')) }}">
@@ -87,11 +87,13 @@
                             @foreach(get_field('editorial', $post->ID) as $editor)
                             <div class="post-author">
                                 <div class="avatar-container">
-                                    <img class="avatar-image" src="{{ get_avatar_url($editor['author_user']->ID) }}" alt="{{ get_the_author_meta('first_name', $editor['author_user']->ID) }}">
+                                    <a href="{{ url('author/'.getUserName($editor['author_user']->ID)) }}">
+                                        <img class="avatar-image" src="{{ get_avatar_url($editor['author_user']->ID) }}" alt="{{ get_the_author_meta('first_name', $editor['author_user']->ID) }}">
+                                    </a>
                                 </div>
                                 <div>
                                     <span class="author">
-                                        <a href="{{ url('author/'.get_the_author_meta('nickname', $editor['author_user']->ID)) ?? '' }}">
+                                        <a href="{{ url('author/'.getUserName($editor['author_user']->ID)) }}">
                                             {{ get_the_author_meta('first_name', $editor['author_user']->ID) }}
                                         </a>
                                     </span>

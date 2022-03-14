@@ -114,6 +114,12 @@ function getPostByKata($number = 3, $except = false)
     return $data;
 }
 
+function getUserName($id)
+{
+    $user = get_user_by('id', $id);
+    return $user->data->user_login ?? '';
+}
+
 function getUser($id)
 {
     $check = false;
