@@ -34,6 +34,7 @@
 @include('layouts.js')
 @include('layouts.script')
 
+@stack('style')
 @stack('scripts')
 
 </html>
