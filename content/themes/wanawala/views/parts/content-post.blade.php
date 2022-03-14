@@ -87,13 +87,13 @@
                             @foreach(get_field('editorial', $post->ID) as $editor)
                             <div class="post-author">
                                 <div class="avatar-container">
-                                    <a href="{{ url('author/'.getUserName($editor['author_user']->ID)) }}">
+                                    <a href="{{ url('author/'.$editor['author_user']->data->user_login) }}">
                                         <img class="avatar-image" src="{{ get_avatar_url($editor['author_user']->ID) }}" alt="{{ get_the_author_meta('first_name', $editor['author_user']->ID) }}">
                                     </a>
                                 </div>
                                 <div>
                                     <span class="author">
-                                        <a href="{{ url('author/'.getUserName($editor['author_user']->ID)) }}">
+                                        <a href="{{ url('author/'.$editor['author_user']->data->user_login) }}">
                                             {{ get_the_author_meta('first_name', $editor['author_user']->ID) }}
                                         </a>
                                     </span>
