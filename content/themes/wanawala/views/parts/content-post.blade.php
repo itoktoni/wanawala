@@ -85,6 +85,7 @@
                             @if(!empty(get_field('editorial', $post->ID)))
                             <h5 class="team">Editorial Team</h5>
                             @foreach(get_field('editorial', $post->ID) as $editor)
+
                             <div class="post-author">
                                 <div class="avatar-container">
                                     <a href="{{ url('author/'.$editor['author_user']->data->user_login) }}">
@@ -93,8 +94,8 @@
                                 </div>
                                 <div>
                                     <span class="author">
-                                        <a href="{{ url('author/'.$editor['author_user']->data->user_login) }}">
-                                            {{ get_the_author_meta('first_name', $editor['author_user']->ID) }}
+                                        <a href="{{ url('author/'.getUserName($editor['author_user']->ID)) }}">
+                                            {{ getAuthor($editor['author_user']->ID) }}
                                         </a>
                                     </span>
                                     <p>{{ $editor['author_job'] ?? '' }}</p>
