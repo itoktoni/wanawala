@@ -5991,6 +5991,10 @@ a {
         li {
             list-style: none;
             padding: 10px;
+            
+            @media (max-width: 600px) {
+                padding: 0px;
+            }
 
             img{
                 width:100%;
@@ -6004,29 +6008,34 @@ a {
                 text-align:-left;
                 @media (max-width: 600px) {
                     text-align: center;
+                    font-size: 25px !important;
                 }
             }
 
             h3 {
-                font-weight: bolder;
-                font-size: 25px !important;
+                font-weight: bolder !important;
+                font-size: 20px !important;
                 
                 text-align:-left;
                 @media (max-width: 600px) {
                     text-align: center;
+                    margin-top:10px !important;
                 }
             }
-
+            
             h5 {
-                font-weight: bold;
+                font-weight: bold !important;
                 text-align:-left;
                 
                 @media (max-width: 600px) {
+                    margin-top:0px !important;
+                    font-size: 20px !important;
                     text-align: center;
                 }
             }
 
             p{
+                font-size:18px !important;
                 @media (max-width: 600px) {
                     text-align:center;
                 }        
