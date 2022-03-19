@@ -5602,8 +5602,8 @@ a {
         .feature-list-image {
 
             img{
-                height:230px;
-                object-fit: contain;
+                max-height: 250px;
+                object-fit: cover;
             }
         }
 
@@ -5762,6 +5762,30 @@ a {
                 h4 {
                     font-size: 18px;
                     font-weight: bold;
+                }
+            }
+
+            .block-content{
+                a{
+                    text-decoration: underline;
+                    cursor:pointer;
+                    font-weight: bold;
+                    color:blue;
+                }
+                
+                a:hover{
+                    
+                    background-color: yellow;
+                }
+
+                .a2a_kit{
+                    a{
+                        text-decoration: unset;
+                        cursor:pointer;
+                        background-color: unset;
+                        font-weight: unset;
+                        color:unset;
+                    }
                 }
             }
         }

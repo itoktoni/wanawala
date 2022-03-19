@@ -76,7 +76,7 @@
 
                     @endif
 
-                    <div class="content">
+                    <div class="content block-content">
                         {!! Loop::content() !!}
                     </div>
 
