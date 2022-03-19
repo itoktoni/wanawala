@@ -6,6 +6,13 @@
 <section id="main" class="main layout-citraleka" role="main">
     <div class="container">
 
+        <div class="search-container">
+            <form role="search" method="get" class="search-form" action="" data-hs-cf-bound="true">
+                <input id="search-field" type="search" class="search-field" value="" name="s" title="Search" placeholder="Pencarian kata kunci : {{ request()->get('s') ?? '' }}">
+                <input type="submit" class="search-submit" value="Search">
+            </form>
+        </div>
+
         <div class="post-content">
 
             <article>
