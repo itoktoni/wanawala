@@ -2,6 +2,7 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <meta charset="{{ get_bloginfo('charset') }}">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="google-site-verification" content="0W0dKGc_3NnBAkr_rhYgUL-efPmK19ooRUaFHIVxB4A" />
 @head
 <link rel="icon" href="{{ get_site_icon_url() }}" sizes="16x16" type="image/png">
 <link rel="shortcut icon" type="image/x-icon" href="{{ get_site_icon_url() }}" />
